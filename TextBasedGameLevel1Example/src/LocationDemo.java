@@ -10,6 +10,10 @@ import java.awt.*;
 //
 public class LocationDemo extends Applet
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Location currentLocation;
 	String command;
 
@@ -77,18 +81,18 @@ public class LocationDemo extends Applet
 	private void showLocation()
 	{
 		// Show room title
-		displayOutput.appendText( "\n" + currentLocation.getTitle() + "\n" );
-		displayOutput.appendText( "\n" );
+		displayOutput.append( "\n" + currentLocation.getTitle() + "\n" );
+		displayOutput.append( "\n" );
 		
 		// Show room description 
-		displayOutput.appendText( currentLocation.getDescription() + "\n" );
+		displayOutput.append( currentLocation.getDescription() + "\n" );
 
 		// Show available exits
-		displayOutput.appendText( "\nAvailable exits : \n" );
-		for (Enumeration e = currentLocation.getExits().elements(); e.hasMoreElements();)
+		displayOutput.append( "\nAvailable exits : \n" );
+		for (Enumeration<Exit> e = currentLocation.getExits().elements(); e.hasMoreElements();)
 		{
 			Exit an_exit = (Exit) e.nextElement();
-			displayOutput.appendText (an_exit + "\n");
+			displayOutput.append(an_exit + "\n");
 		}		
 		
 	}
@@ -111,7 +115,7 @@ public class LocationDemo extends Applet
 			command = command.toUpperCase();
 
 			// Search for an exit match
-			for (Enumeration e = currentLocation.getExits().elements(); e.hasMoreElements();)
+			for (Enumeration<Exit> e = currentLocation.getExits().elements(); e.hasMoreElements();)
 			{
 				Exit an_exit = (Exit) e.nextElement();
 
@@ -134,7 +138,7 @@ public class LocationDemo extends Applet
 			}
 
 			// If code reaches here, direction is invalid
-			displayOutput.appendText ("\nHuh? Invalid direction!\n");
+			displayOutput.append("\nHuh? Invalid direction!\n");
 
 			// Clear text area
 			commandInput.setText (new String());

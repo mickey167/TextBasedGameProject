@@ -1,5 +1,4 @@
 import java.util.Vector;
-import java.util.Enumeration;
 
 //
 //
@@ -12,7 +11,7 @@ public class Location
 	// Member variables
 	private String m_roomTitle;
 	private String m_roomDescription;
-	private Vector m_vecExits;
+	private Vector<Exit> m_vecExits;
 
 	// Blank constructor
 	public Location()
@@ -20,7 +19,7 @@ public class Location
 		// Blank title + description
 		m_roomTitle = new String ();
 		m_roomDescription = new String();
-		m_vecExits = new Vector();
+		m_vecExits = new Vector<Exit>();
 	}
 
 	// Partial constructor
@@ -33,7 +32,7 @@ public class Location
 		m_roomDescription = new String();
 
 		// Blank exits
-		m_vecExits = new Vector();
+		m_vecExits = new Vector<Exit>();
 	}
 
 	// Full constructor
@@ -44,7 +43,7 @@ public class Location
 		m_roomDescription = description;
 
 		// Blank exits
-		m_vecExits = new Vector();
+		m_vecExits = new Vector<Exit>();
 	}
 
 	// toString method
@@ -69,11 +68,12 @@ public class Location
 	}
 
 	// Returns a vector of exits
-	public Vector getExits ()
+	@SuppressWarnings("unchecked")
+	public Vector<Exit> getExits ()
 	{
 		// Return a clone, as we don't want an external
 		// object to modify our original vector
-		return (Vector) m_vecExits.clone();
+		return (Vector<Exit>) m_vecExits.clone();
 	}
 	
 	// Returns location title
